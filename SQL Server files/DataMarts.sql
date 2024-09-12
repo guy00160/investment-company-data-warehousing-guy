@@ -1,6 +1,6 @@
 --create data mart for bookkeeping
 
-Create Table mart_bookkeeping(
+Create Table Mart_bookkeeping(
 Broker_ID int foreign key references tbl_Dim_broker(Broker_ID),
 Broker_Name varchar(50),
 month int,
@@ -10,7 +10,7 @@ primary key(Broker_ID,month,year)
 )
 
 
-insert into mart_bookkeeping (Broker_ID,Broker_Name,month,year,salary)
+insert into Mart_bookkeeping (Broker_ID,Broker_Name,month,year,salary)
 
 select bms.broker_ID,
 (select b.Name
@@ -21,7 +21,7 @@ from Brokers_Monthly_Salary bms
 
 --create data mart for CFO
 
-Create Table mart_CFO(
+Create Table Mart_CFO(
 month int,
 year int,
 commissions varchar(50),
@@ -30,7 +30,7 @@ net_income varchar(50)
 primary key(month,year)
 )
 
-insert into mart_CFO
+insert into Mart_CFO
 
 
  select commi.month, commi.year, cast(commi.company_commission as varchar(50))+'$' as company_commission,
